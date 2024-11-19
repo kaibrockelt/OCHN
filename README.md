@@ -38,11 +38,12 @@ It aims to be open infrastructure for hosting free and open ideas and software:
 * Self-Hosting the Self-Hosting: OHCN can also host itself and cuts the last hard wires to commercial webhosts.
 * Community driven: Through open access and a rule framework, open source projects can contribute their containers to OCHN, given licensing is compatible and quality standards are met. As OHCN is a open source project itself, community rules can be applied accordingly
   
-### 3.3 How It Works
-
-## 4. Technical Architecture
-### 4.1 Distributed Node Network
-### 4.2 Container-based Hosting
+## 4. Technical Concepts
+### 4.1 Target Service architecture
+OCHN aims to replicate a cloud infrastructure based on openly provided service nodes, providing a public service for publically available information and softare. From the outside, it looks and behaves like any cloud infrastructure.
+Internally, the architecture is controlled through configuration, centralized in the code and config of the OCHN service itself.
+### 4.2 Container-based Hosting, load Balancing and Software Architecture
+Applications can be hosted in containers, as we know them from projets like Docker, Kubernetes and alike. 
 ### 4.3 Project Repository
 ### 4.4 Load Balancing and Scaling
 ### 4.5 Security and Integrity Measures
