@@ -37,15 +37,43 @@ It aims to be open infrastructure for hosting free and open ideas and software:
 * Global load balancing: Each self hosted node is well known by the load balancer and can contribute to a stable service globally
 * Self-Hosting the Self-Hosting: OHCN can also host itself and cuts the last hard wires to commercial webhosts.
 * Community driven: Through open access and a rule framework, open source projects can contribute their containers to OCHN, given licensing is compatible and quality standards are met. As OHCN is a open source project itself, community rules can be applied accordingly
+
+### 3.3 Roles & Touchpoints
+
+- project owner / community (the software to be distributed)
+- OCNH owner / community (the software doing the distribution)
+- Infra contributor
+- consumer
   
 ## 4. Technical Concepts
 ### 4.1 Target Service architecture
 OCHN aims to replicate a cloud infrastructure based on openly provided service nodes, providing a public service for publically available information and softare. From the outside, it looks and behaves like any cloud infrastructure.
 Internally, the architecture is controlled through configuration, centralized in the code and config of the OCHN service itself.
+
+OHCN itself consits of a Repository and a software for container distribution and load balancing. It integrates well with existing CI CD and build pipeline concepts. 
+
+
 ### 4.2 Container-based Hosting, load Balancing and Software Architecture
 Applications can be hosted in containers, as we know them from projets like Docker, Kubernetes and alike. 
-### 4.3 Project Repository
-### 4.4 Load Balancing and Scaling
+
+OHCR provides both the software containers can be run in, as well as the service architecure for distributing the service itself, here called the "Application repository". 
+
+![image info](./media/architecture-overview.drawio.png)
+### 4.3 Application Repository
+
+The application Repository is a registry where project containers can be registered.
+The repository can integrate with code hosting and versioning like git through a CICD pipeline. It serves as a configuration point and the source of truth for OCHD hosted projects. Tasks found in the Repository:
+
+- Project Registry and Build information: The Repository holds the information on how to build a node container from scratch. 
+- Configuration for Load Balancing and DNS: a distributed service needs to be findable in the same manner as any host; a centralization of the configuration within the OCHN ensures that the load balancer knows available nodes and can distribute traffic in a meaningful manner.
+- Sign up and application provider service: To allow new and existing projects to benefit from open cloud hosting.
+- Sync services: To allow service nodes to pull containers
+- Optional: a web interface to enable project discovery
+### 4.4 Project architectures and entry points
+OHCN does not aim at the software architecture of the hosted applications. These can and should be designed according to the needs of the project. An Application or Project therefore wraps around containers, instead of being defined within a container.
+
+This allows a dynamic allocation of resources as needed. One could build a monolythic architecture within the container, one could however also allow a microservice architecture, with automatic loadbalancing, or dedicated service nodes as well. 
+
 ### 4.5 Security and Integrity Measures
 
 ## 5. User Experience
